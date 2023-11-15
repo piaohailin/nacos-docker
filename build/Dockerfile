@@ -27,7 +27,7 @@ WORKDIR $BASE_DIR
 
 RUN set -x \
     && yum update -y \
-    && yum install -y java-1.8.0-openjdk java-1.8.0-openjdk-devel iputils nc vim libcurl-minimal \
+    && yum install -y java-1.8.0-openjdk java-1.8.0-openjdk-devel iputils nc vim libcurl \
     && yum clean all
 RUN curl -SL https://github.com/alibaba/nacos/releases/download/${NACOS_VERSION}${HOT_FIX_FLAG}/nacos-server-${NACOS_VERSION}.tar.gz -o /home/nacos-server.tar.gz \
     && tar -xzvf /home/nacos-server.tar.gz -C /home \

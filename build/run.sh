@@ -1,1 +1,0 @@
-docker build -t nacos-docker-m:v2.2.3 .  
