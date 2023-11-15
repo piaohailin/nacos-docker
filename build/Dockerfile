@@ -20,16 +20,15 @@ ENV MODE="cluster" \
     TOMCAT_ACCESSLOG_ENABLED="false" \
     TIME_ZONE="Asia/Shanghai"
 
-ARG NACOS_VERSION=2.1.1
+ARG NACOS_VERSION=2.2.3
 ARG HOT_FIX_FLAG=""
 
 WORKDIR $BASE_DIR
 
 RUN set -x \
     && yum update -y \
-    && yum install -y java-1.8.0-openjdk java-1.8.0-openjdk-devel iputils nc vim  libcurl-minimal \
-    && yum clean all \
-
+    && yum install -y java-1.8.0-openjdk java-1.8.0-openjdk-devel iputils nc vim libcurl \
+    && yum clean all
 RUN curl -SL https://github.com/alibaba/nacos/releases/download/${NACOS_VERSION}${HOT_FIX_FLAG}/nacos-server-${NACOS_VERSION}.tar.gz -o /home/nacos-server.tar.gz \
     && tar -xzvf /home/nacos-server.tar.gz -C /home \
     && rm -rf /home/nacos-server.tar.gz /home/nacos/bin/* /home/nacos/conf/*.properties /home/nacos/conf/*.example /home/nacos/conf/nacos-mysql.sql \
